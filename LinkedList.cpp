@@ -1,17 +1,14 @@
 /**Implementation of the functions said to be implemetned in the .h file, nothing exclusive to the
 * RPN calculator is here.
  * @author		Johnny Ceja
- * Course		COMP B12
+ * Course		CS 41
  * Created		Sept. 1 2016
  * Source File:	LinkedList.cpp
  */
 #include <iostream>
-#include <stdlib.h>
 using namespace std;
-
-/**
-* Prints all the data in the nodes for debugging.
-*
+/**Implementation of the functions said to be implemetned , nothing exclusive to the
+* RPN calculator is here.
 */
 template <typename T>
 void LinkedList<T>::printAll()
@@ -51,15 +48,17 @@ string LinkedList<T>::pop()
 		tempStr = ptr->next->data;
 		tempPtr = ptr->next;
 		ptr->next = 0;
+		--size;
 		delete tempPtr;
 	}
 	else //if link size < 2 the above would crash the program since it would try to access random memory
 	{
 		--size;
-		return ptr->data;
+		tempStr = ptr->data;
+		ptr->next = 0;
+		ptr->data = "";
+		return tempStr;
 	}
-	--size;
-	return tempStr;
 }
 /**
 *Adds node to the end of the list like a stack would.
@@ -67,7 +66,7 @@ string LinkedList<T>::pop()
 template <typename T>
 void LinkedList<T>::push(T num)
 {
-	
+
 	Node *ptr = head;
 	if(size == 0) //first thing entered is initially pointed by the ptr, just enter data directly
 	{

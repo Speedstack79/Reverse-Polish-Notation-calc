@@ -2,15 +2,18 @@
 * is supposed to do. Although the calculator does all the calculation with a string, a template
 * is used in case I want to add a different data type.
  * @author		Johnny Ceja
- * Course		COMP B12
+ * Course		CS 41
  * Created		Sept. 1 2016
  * Source File:	LinkedList.h
  */
-#include <stdlib.h>
+#include <iostream>
+#include <stdlib.h> //ascii to float function, string to float is not working for me
+#include <sstream> //float to string function
 #ifndef LINKEDLIST_H_
 #define LINKEDLIST_H_
+using namespace std;
 
-template <typename T> 
+template <typename T>
 class LinkedList
 {
 private:
